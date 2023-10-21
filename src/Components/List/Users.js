@@ -37,8 +37,9 @@ function Users({ Data, ShowModal }) {
 
 
     // Filtering Data for displaying
-    const ToFilterData = () => {
 
+    // useEffect
+    useEffect(() => {
 
         var FilteredData = Data.filter((data) => {
             const isUserInputEmpty = userInput === '';
@@ -62,12 +63,7 @@ function Users({ Data, ShowModal }) {
 
         FilteredData.reverse();
         SetFData(FilteredData);
-    }
-
-    // useEffect
-    useEffect(() => {
-        ToFilterData();
-    }, [userInput, userSelect, userCategory, Data])
+    }, [userInput, userSelect, userCategory, Data, CousreCategory])
 
 
 

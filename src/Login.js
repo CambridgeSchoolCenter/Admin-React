@@ -12,10 +12,8 @@ function Login({ setAuth }) {
 
     // useForm for checking
     const {
-        register,
+
         handleSubmit,
-        reset,
-        watch,
         formState: { errors },
     } = useForm();
 
