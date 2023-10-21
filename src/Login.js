@@ -12,7 +12,7 @@ function Login({ setAuth }) {
 
     // useForm for checking
     const {
-
+        register,
         handleSubmit,
         formState: { errors },
     } = useForm();
@@ -57,6 +57,9 @@ function Login({ setAuth }) {
                 <div className="col-md-6">
                     <h2 className="text-center">Войти</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {errors.name && <p className="error-message"> Неверное имя пользовотеля</p>}
+                    {errors.password && <p className="error-message"> Неверные пароль</p>}
                         <div className="mb-3">
                             <label htmlFor="username" className="form-label">
                                 Имя
@@ -68,6 +71,7 @@ function Login({ setAuth }) {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
+                                {...register("name")}
                             />
                         </div>
                         <div className="mb-3">
@@ -81,6 +85,7 @@ function Login({ setAuth }) {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
+                                {...register("password")}
                             />
                         </div>
                         <div className="d-grid">

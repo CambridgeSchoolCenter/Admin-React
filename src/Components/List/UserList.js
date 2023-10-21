@@ -72,7 +72,7 @@ function UserList() {
     GetData();
 
 
-  }, []);
+  }, [Istrig,GetData]);
   return (
     <div className='Main'>
       
