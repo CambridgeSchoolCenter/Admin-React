@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 
 function Users({ Data, ShowModal }) {
+
     const userInput = useSelector(state => state.userInput.value);
     const userSelect = useSelector(state => state.userSelect.value);
     const userCategory = useSelector(state => state.userCategory.value);
@@ -11,35 +12,36 @@ function Users({ Data, ShowModal }) {
     const handleShow = (detailData) => ShowModal(detailData);
 
 
-    const CousreCategory = [
-        [
-            "Английский",
-            "Немецкий",
-            "Русский",
-            "Китайский"
-        ],
-        [
-            "Таджиский",
-            "Физика",
-            "Химия",
-            "Биология"
-        ],
-        [
-            "Младший медицинский работник",
-            "Первая медицинская помощь",
-            "Укол",
-            "Акапелла",
-            "Манометр",
-            "Изучение медикаментов",
-            "Массаж",
-        ]
-    ]
+
 
 
     // Filtering Data for displaying
 
     // useEffect
     useEffect(() => {
+        const CousreCategory = [
+            [
+                "Английский",
+                "Немецкий",
+                "Русский",
+                "Китайский"
+            ],
+            [
+                "Таджиский",
+                "Физика",
+                "Химия",
+                "Биология"
+            ],
+            [
+                "Младший медицинский работник",
+                "Первая медицинская помощь",
+                "Укол",
+                "Акапелла",
+                "Манометр",
+                "Изучение медикаментов",
+                "Массаж",
+            ]
+        ]
 
         var FilteredData = Data.filter((data) => {
             const isUserInputEmpty = userInput === '';
@@ -63,7 +65,7 @@ function Users({ Data, ShowModal }) {
 
         FilteredData.reverse();
         SetFData(FilteredData);
-    }, [userInput, userSelect, userCategory, Data, CousreCategory])
+    }, [userInput, userSelect, userCategory, Data])
 
 
 

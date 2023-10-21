@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import Users from './Users'
 import { useSelector, useDispatch } from 'react-redux';
 import { SetData } from '../../redux/UserDatas';
@@ -17,7 +17,7 @@ function UserList() {
 
 
   // Get Students Datas 
-  const GetData = () => {
+  const GetData = useCallback(() => {
 
     console.log("This message is before getting data");
 
@@ -31,7 +31,7 @@ function UserList() {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }
+  },[dispatch])
 
 
   // Making Visit false (also sending it to server)
@@ -64,12 +64,13 @@ function UserList() {
 
   // Getting data at the begging of the code and pushing GetData function to evenBus
   useEffect(() => {
+    GetData();
     if (!Istrig) {
       eventBus.subscribe('triggerGetData', GetData);
       console.log("This is a useEffact state")
       setIsTrig(true);
     }
-    GetData();
+    
 
 
   }, [Istrig,GetData]);
