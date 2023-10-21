@@ -1,1 +1,1 @@
-export const APP_URL='http://192.168.0.111:3002';   
+export const APP_URL='https://cambridge-api-slrm.onrender.com';   
