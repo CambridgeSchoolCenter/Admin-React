@@ -1,0 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+body {
+    overflow: hidden;
+    
+}
+
+
+.main {
+    background-color: rgb(184, 203, 201);
+}

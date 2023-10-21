@@ -1,0 +1,106 @@
+.Main {
+    margin: 0;
+    padding: 0;
+    height: 80vh;
+    overflow-y: auto;
+
+}
+
+
+.ListUser {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
+.ListUser table {
+    width: 98%;
+    justify-content: space-between;
+    color: rgb(255, 255, 255);
+    /* border-radius: 5px !important; */
+}
+
+
+/*****************  Table for making rounded (border-radius for table)  *****************/
+
+/* Apply rounded borders to the table */
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    /* Adjust the value as needed */
+    overflow: hidden;
+    
+    /* Hide the inner borders */
+}
+
+
+
+/* Apply rounded borders to table rows */
+tr {
+    border-radius: 0;
+    
+
+    /* Reset the border radius for rows */
+}
+
+/* Apply rounded borders to table cells (td) */
+td,
+th {
+
+    padding: 8px;
+    border-radius: 0;
+    /* Reset the border radius for cells */
+}
+
+/* Apply rounded borders to the top row */
+tr:first-child {
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+/* Apply rounded borders to the bottom row */
+tr:last-child {
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Apply rounded borders to the left column */
+td:first-child,
+th:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+/* Apply rounded borders to the right column */
+td:last-child,
+th:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+
+/* Style the scrollbar track */
+::-webkit-scrollbar {
+    width: 12px;
+    /* Set the width of the scrollbar */
+    background: #969696;
+    /* Background color of the track */
+    border-radius: 4px;
+    /* Round the corners of the track */
+}
+
+/* Style the scrollbar thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+    background: #ffffff;
+    /* Background color of the thumb */
+    border-radius: 4px;
+    /* Round the corners of the thumb */
+}

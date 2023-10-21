@@ -1,0 +1,63 @@
+.Navigation {
+    width: 100%;
+}
+
+.menu-items {
+    padding: 0;
+    margin: 0;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+.menu-items span {
+    font-size: 30px;
+}
+
+/* .menu-items li {
+    cursor: pointer;
+} */
+
+.nav-list {
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-list:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transform: translateX(-50%);
+    /* Center the underline */
+    /* Change to your desired color */
+    transition: width 0.4s ease-in-out;
+}
+
+.nav-list.active:after {
+    width: 100%;
+}
+
+.nav-list:hover::after {
+    width: 100%;
+}
+
+
+#SearchInput {
+    font-size: 22px;
+}
+
+.Search div select {
+    font-size: x-large;
+}
+
+.Search .Input {
+    height: 20px;
+    width: 998px;
+}
+
+.Navigation ul li {
+    font-size: x-large;
+}
