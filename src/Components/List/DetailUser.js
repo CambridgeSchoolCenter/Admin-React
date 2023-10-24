@@ -5,6 +5,18 @@ import { APP_URL } from '../../config';
 function DetailUser({ Close, Data, }) {
     Modal.setAppElement('#root');
 
+    // Headers
+
+    const token = localStorage.getItem('token');
+    const headers = {
+        'Authorization': `${token}`,
+        'Content-Type': 'application/json', // You may need other headers as well
+    };
+
+    const config = {
+        headers: headers,
+    };
+
     // Months
     const months = [
         "Январь",
@@ -41,7 +53,7 @@ function DetailUser({ Close, Data, }) {
     const Delate = (e) => {
 
         e.preventDefault();
-        axios.delete(`${APP_URL}/student_del/${Data._id}`, { withCredentials: true })
+        axios.delete(`${APP_URL}/student_del/${Data._id}`, config)
             .then((response) => {
                 // Handle success (e.g., show a success message)
                 console.log('Resource deleted successfully:', response.data);

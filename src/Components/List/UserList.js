@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import Users from './Users'
 import { useSelector, useDispatch } from 'react-redux';
 import { SetData } from '../../redux/UserDatas';
@@ -15,13 +15,24 @@ function UserList() {
   const dispatch = useDispatch();
   const [Istrig, setIsTrig] = useState(false);
 
+  // Headers
 
+  const token = localStorage.getItem('token');
+  const config = useMemo(() => {
+    return {
+      headers: {
+        'Authorization': `${token}`,
+        'Content-Type': 'application/json',
+      },
+    };
+  }, [token]);
   // Get Students Datas 
   const GetData = useCallback(() => {
 
+
     console.log("This message is before getting data");
 
-    axios.get(`${APP_URL}/students`)
+    axios.get(`${APP_URL}/students`, config)
       .then(response => {
         console.log("This message is AFTER getting data");
         console.log("This is .......................", response.data);
@@ -31,12 +42,12 @@ function UserList() {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  },[dispatch])
+  }, [dispatch, config])
 
 
   // Making Visit false (also sending it to server)
   const Visit = (id) => {
-    axios.put(`${APP_URL}/visit_student/${id}`)
+    axios.put(`${APP_URL}/visit_student/${id}`, { Userid: id }, config)
       .then(response => {
         console.log("Visited");
       })
@@ -70,13 +81,13 @@ function UserList() {
       console.log("This is a useEffact state")
       setIsTrig(true);
     }
-    
 
 
-  }, [Istrig,GetData]);
+
+  }, [Istrig, GetData]);
   return (
     <div className='Main'>
-      
+
       <Users Data={UserData} ShowModal={ShowModal} />
 
       {/* Modal */}
