@@ -32,25 +32,8 @@ function Login({ setAuth }) {
             if (loginResponse.status === 200) {
                 console.log("Аутентификация прошла успешно");
                 localStorage.setItem('token', loginResponse.data.token);
-                //INFO:Connect
+                setAuth(true);
 
-                const token = localStorage.getItem('token');
-                console.log("This is token", token);
-
-                const headers = {
-                    'Authorization': `${token}`,
-                    'Content-Type': 'application/json', // You may need other headers as well
-                };
-
-                const config = {
-                    headers: headers,
-                };
-
-                const response = await axios.get(`${APP_URL}/students`,config);
-                console.log(response.data);
-                if (response.status === 200) {
-                    setAuth(true);
-                }
             } else {
                 console.log("Неверные логин или пароль");
             }
