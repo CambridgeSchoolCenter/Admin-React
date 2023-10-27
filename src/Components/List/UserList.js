@@ -30,12 +30,10 @@ function UserList() {
   const GetData = useCallback(() => {
 
 
-    console.log("This message is before getting data");
 
     axios.get(`${APP_URL}/students`, config)
       .then(response => {
-        console.log("This message is AFTER getting data");
-        console.log("This is .......................", response.data);
+        console.log("Got students data");
         dispatch(SetData(response.data));
 
       })
@@ -49,7 +47,7 @@ function UserList() {
   const Visit = (id) => {
     axios.put(`${APP_URL}/visit_student/${id}`, { Userid: id }, config)
       .then(response => {
-        console.log("Visited");
+        console.log("made student's visited = true");
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -58,7 +56,6 @@ function UserList() {
 
   // Showing modal with all student's detail info
   const ShowModal = (detaleData) => {
-    console.log(detaleData);
     SetDetail(detaleData);
     setShow(true);
     Visit(detaleData._id);
@@ -78,7 +75,6 @@ function UserList() {
     GetData();
     if (!Istrig) {
       eventBus.subscribe('triggerGetData', GetData);
-      console.log("This is a useEffact state")
       setIsTrig(true);
     }
 

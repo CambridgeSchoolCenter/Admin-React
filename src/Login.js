@@ -5,9 +5,7 @@ import { APP_URL } from "./config";
 function Login({ setAuth }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    // Credentials True for cookies
-    axios.defaults.withCredentials = true;
+    const [error, setError] = useState(false);
 
 
     // useForm for checking
@@ -27,7 +25,6 @@ function Login({ setAuth }) {
                 password: password,
             });
 
-            // console.log(loginResponse.data);
 
             if (loginResponse.status === 200) {
                 console.log("Аутентификация прошла успешно");
@@ -37,9 +34,10 @@ function Login({ setAuth }) {
             } else {
                 console.log("Неверные логин или пароль");
             }
-        } catch (error) {
-            //   setAuthText(true);
-            console.error(error);
+        } catch (errors) {
+            console.log("Неверные логин или пароль");
+            setError(true);
+            
         }
     };
 
@@ -54,8 +52,10 @@ function Login({ setAuth }) {
                     <h2 className="text-center">Войти</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
-                        {/* {errors && <p className="error-message"> Неверное имя пользовотеля или пароль</p>} */}
+                        {/* Error */}
+                        {error && <p className="error-message text-danger"> Неверное имя  или пароль</p>}
                         <div className="mb-3">
+                            {/* Name */}
                             <label htmlFor="username" className="form-label">
                                 Имя
                             </label>
@@ -66,10 +66,10 @@ function Login({ setAuth }) {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                                 required
-
                             />
                         </div>
                         <div className="mb-3">
+                            {/* password */}
                             <label htmlFor="password" className="form-label">
                                 Пароль
                             </label>

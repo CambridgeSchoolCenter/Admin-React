@@ -14,7 +14,6 @@ function SearchInput() {
 
     // Img function for reloading data
     const handleReload = () => {
-        console.log("This logo is working");
         eventBus.publish('triggerGetData');
     }
 
@@ -69,5 +68,3 @@ function SearchInput() {
 }
 
 export default SearchInput;
-
-// position-absolute bottom-0 end-0 translate-middle-y m-3
